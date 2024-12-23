@@ -1,7 +1,9 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat()
-{}
+Bureaucrat::Bureaucrat(void): name("default"), grade(150)
+{
+
+}
 Bureaucrat::Bureaucrat(const Bureaucrat &src)
 {}
 Bureaucrat::Bureaucrat(int grade)

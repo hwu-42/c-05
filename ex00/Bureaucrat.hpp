@@ -8,7 +8,7 @@ class Bureaucrat
         int                 grade;
     
     public:
-        Bureaucrat();
+        Bureaucrat(void);
         Bureaucrat(const Bureaucrat &src);
         Bureaucrat(int grade);
         Bureaucrat(std::string name);
