@@ -1,5 +1,10 @@
 #include "../include/AForm.hpp"
 
+AForm::AForm(): type("default"), is_signed(false), sign_grade(1), exec_grade(1)
+{
+	std::cout << "default constructor called" << std::endl;
+}
+
 AForm::AForm(const AForm &src): type(src.type), is_signed(src.is_signed), sign_grade(src.sign_grade), exec_grade(src.exec_grade)
 {
 	std::cout << "copy constructor called" << std::endl;
@@ -21,6 +26,14 @@ AForm::AForm(std::string type, bool sign, int sGrade, int xGrade, std::string t)
 AForm::~AForm()
 {
 	std::cout << "destructor called" << std::endl;
+}
+AForm &AForm::operator=(const AForm &src)
+{
+	std::cout << "assignation operator called" << std::endl;
+	if (this == &src)
+		return (*this);
+	this->is_signed = src.is_signed;
+	return (*this);
 }
 
 int AForm::getSGrade(void) const

@@ -1,5 +1,10 @@
 #include "Form.hpp"
 
+
+Form::Form(void): type("default"), is_signed(false), sign_grade(150), exec_grade(150)
+{
+	std::cout << "default constructor called" << std::endl;
+}
 Form::Form(const Form &src): type(src.type), is_signed(src.is_signed), sign_grade(src.sign_grade), exec_grade(src.exec_grade)
 {
 	std::cout << "copy constructor called" << std::endl;
@@ -8,7 +13,7 @@ Form::Form(const Form &src): type(src.type), is_signed(src.is_signed), sign_grad
 
 Form::Form(std::string type, bool sign, int sGrade, int xGrade): type(type), is_signed(sign), sign_grade(sGrade), exec_grade(xGrade)
 {
-	std::cout << "name & grade constructor called" << std::endl;
+	std::cout << "full Form constructor called" << std::endl;
 	if (sign_grade < 1)
 		throw GradeTooHighException();
 	else if (sign_grade > 150)
@@ -22,6 +27,14 @@ Form::~Form()
 {
 	std::cout << "destructor called" << std::endl;
 }
+Form &Form::operator=(const Form &src)
+{
+	if (this != &src)
+	{
+		this->is_signed = src.get_is_signed();
+	}
+	return (*this);
+}
 
 int Form::getSGrade(void)
 {
@@ -31,11 +44,11 @@ int Form::getXGrade(void)
 {
 	return (this->exec_grade);
 }
-const std::string Form::getType(void)
+const std::string Form::getType(void) const
 {
 	return (this->type);
 }
-bool	Form::get_is_signed(void)
+bool	Form::get_is_signed(void) const
 {
 	return (this->is_signed);
 }

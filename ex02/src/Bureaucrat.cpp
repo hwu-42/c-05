@@ -37,6 +37,15 @@ Bureaucrat::~Bureaucrat()
 	std::cout << "destructor called" << std::endl;
 }
 
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src)
+{
+	std::cout << "assignation operator called" << std::endl;
+	if (this == &src)
+		return (*this);
+	this->grade = src.grade;
+	return (*this);
+}
+
 int Bureaucrat::getGrade(void) const
 {
 	return (this->grade);

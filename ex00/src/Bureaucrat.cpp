@@ -36,6 +36,15 @@ Bureaucrat::~Bureaucrat()
 {
 	std::cout << "destructor called" << std::endl;
 }
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src)
+{
+	if (this != &src)
+	{
+		std::cout << "assignation operator called, warning const name is not copied only grade copied" << std::endl;
+		this->grade = src.grade;
+	}
+	return (*this);
+}
 
 int Bureaucrat::getGrade(void)
 {

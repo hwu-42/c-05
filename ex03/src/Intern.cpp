@@ -1,24 +1,17 @@
 #include "../include/Intern.hpp"
 
-
-
-
 AForm* Intern::make(const std::string& name, std::string target)
 {
-    // Define the map with form names and corresponding creator functions
-    static std::map<std::string, FormCreator> factory_map;
-
-    // Populate the map only once
-    if (factory_map.empty()) {
-        factory_map["ShrubberyCreationForm"] = &createShrubberyCreationForm;
-        factory_map["RobotomyRequestForm"] = &createRobotomyRequestForm;
-        factory_map["PresidentialPardonForm"] = &createPresidentialPardonForm;
-    }
-
-    std::map<std::string, FormCreator>::iterator it = factory_map.find(name);
-    if (it != factory_map.end()) {
-        return it->second(target); // Call the creator function
-    } else {
+    
+    switch (name == "ShrubberyCreationForm" ? 0 : name == "RobotomyRequestForm" ? 1 : name == "PresidentialPardonForm" ? 2 : -1)
+    {
+    case 0:
+        return createShrubberyCreationForm(target);
+    case 1:
+        return createRobotomyRequestForm(target);
+    case 2:
+        return createPresidentialPardonForm(target);
+    default:
         std::cerr << "Unknown form type: " << name << std::endl;
         return NULL;
     }

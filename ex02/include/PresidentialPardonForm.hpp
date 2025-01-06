@@ -7,10 +7,10 @@
 class PresidentialPardonForm: public AForm
 {
     public:
-        //Form(void);
+
         PresidentialPardonForm(const PresidentialPardonForm &src);
         PresidentialPardonForm(std::string t);
-        //AForm(std::string name, int grade);
+
 
         ~PresidentialPardonForm();
 

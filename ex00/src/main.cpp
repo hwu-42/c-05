@@ -6,13 +6,12 @@ int main(void)
 
 		Bureaucrat *a = new Bureaucrat();
 
-
-
-		std::cout << a;
+		std::cout << a << std::endl;
 
 		try // in my opinion would make more sense if the try-catch blocks would have been inside the class itself already
 		{
-		    a->upGrade();
+		    std::cout << "trying to upgrade" << std::endl;
+			a->upGrade();
 		}
 		catch(Bureaucrat::GradeTooHighException &e) // the try-catch blocks inside the class are commented out but fully functional
 		{
@@ -20,11 +19,12 @@ int main(void)
 			" failed: " << e.what() << std::endl;
 		}
 
-		std::cout << a;
+		std::cout << a << std::endl;
 
 		try
 		{
-		    a->downGrade();
+		    std::cout << "trying to downgrade" << std::endl;
+			a->downGrade();
 		}
 		catch(Bureaucrat::GradeTooLowException &e)
 		{
@@ -32,10 +32,27 @@ int main(void)
 			" failed: " << e.what() << std::endl;
 		}
 
-		std::cout << a;
+		try
+		{
+		    std::cout << "trying to downgrade again" << std::endl;
+			a->downGrade();
+		}
+		catch(Bureaucrat::GradeTooLowException &e)
+		{
+			std::cerr << "downgrade of " << a->getName() <<
+			" failed: " << e.what() << std::endl;
+		}
+
+		std::cout << a << std::endl;
+
+		Bureaucrat c("c", 12);
+		std::cout << &c << std::endl;
+		c = *a;
+		std::cout << &c << std::endl;
 
 		delete a;
-		std::cout << std::endl;
+
+		std::cout << "c will be removed from memory:" << std::endl;
 	}
 	std::cout << "-------------------------------------------------------" << std::endl;
 	{
@@ -44,19 +61,19 @@ int main(void)
 		Bureaucrat *a = new Bureaucrat(1);
 		std::cout << std::endl;
 
-		std::cout << a;
+		std::cout << a << std::endl;
 
-		try // in my opinion would make more sense if the try-catch blocks would have been inside the class itself already
+		try
 		{
 		    a->upGrade();
 		}
-		catch(Bureaucrat::GradeTooHighException &e) // the try-catch blocks inside the class are commented out but fully functional
+		catch(Bureaucrat::GradeTooHighException &e)
 		{
 			std::cerr << "upgrade of " << a->getName() <<
 			" failed: " << e.what() << std::endl;
 		}
 
-		std::cout << a;
+		std::cout << a << std::endl;
 
 		try
 		{
@@ -68,10 +85,12 @@ int main(void)
 			" failed: " << e.what() << std::endl;
 		}
 
-		std::cout << a;
+		std::cout << a << std::endl;
 		delete a;
 		std::cout << std::endl;
 	}
+
+
 	std::cout << "-------------------------------------------------------" << std::endl;
 	{
 		Bureaucrat *a = NULL;
@@ -119,11 +138,11 @@ int main(void)
 		Bureaucrat *a = new Bureaucrat("Peter", 120);
 		std::cout << std::endl;
 
-		std::cout << a;
+		std::cout << a << std::endl;
 		std::cout << std::endl;
 		a->downGrade();
 
-		std::cout << a;
+		std::cout << a << std::endl;
 		std::cout << std::endl;
 
 		Bureaucrat *b = new Bureaucrat(*a);

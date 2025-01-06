@@ -254,8 +254,18 @@ int main(void)
 	std::cout << "\n\n\n";
 	std::cout << "test Intern:\n";
 	{
-		std::cout << "test make valid type of form:\n";
-		AForm* f = Intern::make("RobotomyRequestForm", "Tom");
+		std::cout << "test make valid type of form1:\n";
+		AForm* f = Intern::make("ShrubberyCreationForm", "farm");
+		std::cout << f << std::endl;
+		delete (f);
+
+		std::cout << "test make valid type of form2:\n";
+		f = Intern::make("PresidentialPardonForm", "Tom");
+		std::cout << f << std::endl;
+		delete (f);
+
+		std::cout << "test make valid type of form3:\n";
+		f = Intern::make("RobotomyRequestForm", "notrobot");
 		std::cout << f << std::endl;
 		delete (f);
 

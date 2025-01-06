@@ -14,14 +14,14 @@ class AForm
         std::string         target;
     
     public:
-        //Form(void);
+        AForm(void);
         AForm(const AForm &src);
         AForm(std::string type, bool sign, int sGrade, int xGrade, std::string t);
         //AForm(std::string name, int grade);
 
         virtual ~AForm();
 
-        //AForm &operator=(const AForm &src);
+        AForm &operator=(const AForm &src);
 
         int                 getSGrade(void) const;
         const std::string   getType(void) const;

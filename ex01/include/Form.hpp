@@ -2,6 +2,8 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form
 {
     private:
@@ -11,19 +13,19 @@ class Form
         const int           exec_grade;
     
     public:
-        //Form(void);
+        Form(void);
         Form(const Form &src);
         Form(std::string type, bool sign, int sGrade, int xGrade);
         //Form(std::string name, int grade);
 
         ~Form();
 
-        //Form &operator=(const Form &src);
+        Form &operator=(const Form &src);
 
         int                 getSGrade(void);
-        const std::string   getType(void);
+        const std::string   getType(void) const;
         int                 getXGrade(void);
-        bool                get_is_signed(void);
+        bool                get_is_signed(void) const;
 
         class GradeTooHighException: public std::exception
         {
